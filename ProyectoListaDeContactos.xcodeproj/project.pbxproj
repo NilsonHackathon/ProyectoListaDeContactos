@@ -14,6 +14,8 @@
 		778348F32CB0AB7D00F2509F /* ProyectoListaDeContactos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 778348F12CB0AB7D00F2509F /* ProyectoListaDeContactos.xcdatamodeld */; };
 		778348F52CB0AB8E00F2509F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 778348F42CB0AB8E00F2509F /* Assets.xcassets */; };
 		778348F82CB0AB8E00F2509F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778348F62CB0AB8E00F2509F /* LaunchScreen.storyboard */; };
+		778349032CB0EE0200F2509F /* ContactoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778349012CB0EE0200F2509F /* ContactoTableViewCell.swift */; };
+		778349042CB0EE0200F2509F /* ContactoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778349022CB0EE0200F2509F /* ContactoTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		778348F42CB0AB8E00F2509F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		778348F72CB0AB8E00F2509F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		778348F92CB0AB8E00F2509F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		778349012CB0EE0200F2509F /* ContactoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoTableViewCell.swift; sourceTree = "<group>"; };
+		778349022CB0EE0200F2509F /* ContactoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,34 @@
 		778348E72CB0AB7D00F2509F /* ProyectoListaDeContactos */ = {
 			isa = PBXGroup;
 			children = (
+				778348FF2CB0ED0700F2509F /* View */,
 				778348E82CB0AB7D00F2509F /* AppDelegate.swift */,
 				778348EA2CB0AB7D00F2509F /* SceneDelegate.swift */,
-				778348EC2CB0AB7D00F2509F /* ViewController.swift */,
-				778348EE2CB0AB7D00F2509F /* Main.storyboard */,
 				778348F42CB0AB8E00F2509F /* Assets.xcassets */,
 				778348F62CB0AB8E00F2509F /* LaunchScreen.storyboard */,
 				778348F92CB0AB8E00F2509F /* Info.plist */,
 				778348F12CB0AB7D00F2509F /* ProyectoListaDeContactos.xcdatamodeld */,
 			);
 			path = ProyectoListaDeContactos;
+			sourceTree = "<group>";
+		};
+		778348FF2CB0ED0700F2509F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				778349002CB0ED5800F2509F /* Cell */,
+				778348EE2CB0AB7D00F2509F /* Main.storyboard */,
+				778348EC2CB0AB7D00F2509F /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		778349002CB0ED5800F2509F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				778349012CB0EE0200F2509F /* ContactoTableViewCell.swift */,
+				778349022CB0EE0200F2509F /* ContactoTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				778349042CB0EE0200F2509F /* ContactoTableViewCell.xib in Resources */,
 				778348F82CB0AB8E00F2509F /* LaunchScreen.storyboard in Resources */,
 				778348F52CB0AB8E00F2509F /* Assets.xcassets in Resources */,
 				778348F02CB0AB7D00F2509F /* Main.storyboard in Resources */,
@@ -144,6 +167,7 @@
 				778348ED2CB0AB7D00F2509F /* ViewController.swift in Sources */,
 				778348E92CB0AB7D00F2509F /* AppDelegate.swift in Sources */,
 				778348F32CB0AB7D00F2509F /* ProyectoListaDeContactos.xcdatamodeld in Sources */,
+				778349032CB0EE0200F2509F /* ContactoTableViewCell.swift in Sources */,
 				778348EB2CB0AB7D00F2509F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
