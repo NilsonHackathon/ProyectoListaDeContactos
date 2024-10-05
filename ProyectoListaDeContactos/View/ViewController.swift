@@ -18,6 +18,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    private var contacts = [ContactoDatos]()
+    
+    let controller = MainController()
+    
     private lazy var dataSource: DataSource = {
         let datasource = DataSource(tableView: tableView) { tableView, IndexPath, itemIdentifier in let cell = tableView.dequeueReusableCell(withIdentifier: "ContactoTableViewCell", for: IndexPath) as? ContactoTableViewCell
             
@@ -38,6 +42,13 @@ class ViewController: UIViewController {
         buttonConfiguration()
         
         cellRegistation()
+        
+        getData()
+    }
+    
+    func getData () {
+        contacts =  controller.getContacts()
+        applySnapchot()
     }
     
     private func cellRegistation(){
@@ -45,11 +56,21 @@ class ViewController: UIViewController {
     }
 
     private func buttonConfiguration() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.plus"), style: .plain, target: self, action: #selector(addNote))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.plus"), style: .plain, target: self, action: #selector(addContact))
     }
     
-    @objc func addNote(){
+    private func applySnapchot() {
+        var snapchot = Snapshot()
         
+        snapchot.appendSections([.main])
+        snapchot.appendItems(contacts)
+        
+        
+        dataSource.apply(snapchot, animatingDifferences: false)
+    }
+
+    @objc func addContact(){
+        controller.saveContacts(nombre: "Nilson", apellidos: "Saballos Arana", numero: "88051397")
     }
     
 }

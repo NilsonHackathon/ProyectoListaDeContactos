@@ -16,6 +16,8 @@
 		778348F82CB0AB8E00F2509F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778348F62CB0AB8E00F2509F /* LaunchScreen.storyboard */; };
 		778349032CB0EE0200F2509F /* ContactoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778349012CB0EE0200F2509F /* ContactoTableViewCell.swift */; };
 		778349042CB0EE0200F2509F /* ContactoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778349022CB0EE0200F2509F /* ContactoTableViewCell.xib */; };
+		778349072CB1BBEC00F2509F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778349062CB1BBEC00F2509F /* CoreDataStack.swift */; };
+		778349092CB1CBB300F2509F /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778349082CB1CBB300F2509F /* MainController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		778348F92CB0AB8E00F2509F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		778349012CB0EE0200F2509F /* ContactoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoTableViewCell.swift; sourceTree = "<group>"; };
 		778349022CB0EE0200F2509F /* ContactoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactoTableViewCell.xib; sourceTree = "<group>"; };
+		778349062CB1BBEC00F2509F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		778349082CB1CBB300F2509F /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +66,13 @@
 		778348E72CB0AB7D00F2509F /* ProyectoListaDeContactos */ = {
 			isa = PBXGroup;
 			children = (
+				778349052CB1BBC100F2509F /* CoreData */,
 				778348FF2CB0ED0700F2509F /* View */,
 				778348E82CB0AB7D00F2509F /* AppDelegate.swift */,
 				778348EA2CB0AB7D00F2509F /* SceneDelegate.swift */,
 				778348F42CB0AB8E00F2509F /* Assets.xcassets */,
 				778348F62CB0AB8E00F2509F /* LaunchScreen.storyboard */,
 				778348F92CB0AB8E00F2509F /* Info.plist */,
-				778348F12CB0AB7D00F2509F /* ProyectoListaDeContactos.xcdatamodeld */,
 			);
 			path = ProyectoListaDeContactos;
 			sourceTree = "<group>";
@@ -79,6 +83,7 @@
 				778349002CB0ED5800F2509F /* Cell */,
 				778348EE2CB0AB7D00F2509F /* Main.storyboard */,
 				778348EC2CB0AB7D00F2509F /* ViewController.swift */,
+				778349082CB1CBB300F2509F /* MainController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,6 +95,15 @@
 				778349022CB0EE0200F2509F /* ContactoTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		778349052CB1BBC100F2509F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				778348F12CB0AB7D00F2509F /* ProyectoListaDeContactos.xcdatamodeld */,
+				778349062CB1BBEC00F2509F /* CoreDataStack.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,8 +179,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				778348ED2CB0AB7D00F2509F /* ViewController.swift in Sources */,
+				778349092CB1CBB300F2509F /* MainController.swift in Sources */,
 				778348E92CB0AB7D00F2509F /* AppDelegate.swift in Sources */,
 				778348F32CB0AB7D00F2509F /* ProyectoListaDeContactos.xcdatamodeld in Sources */,
+				778349072CB1BBEC00F2509F /* CoreDataStack.swift in Sources */,
 				778349032CB0EE0200F2509F /* ContactoTableViewCell.swift in Sources */,
 				778348EB2CB0AB7D00F2509F /* SceneDelegate.swift in Sources */,
 			);
