@@ -70,7 +70,12 @@ class ViewController: UIViewController {
     }
 
     @objc func addContact(){
-        controller.saveContacts(nombre: "Nilson", apellidos: "Saballos Arana", numero: "88051397")
+       /* controller.saveContacts(nombre: "Nilson", apellidos: "Saballos Arana", numero: "88051397", empresa: "UAM")
+        getData()*/
+        
+        let addContactVC = AddContactViewController()
+        
+        navigationController?.pushViewController(addContactVC, animated: true)
     }
     
 }

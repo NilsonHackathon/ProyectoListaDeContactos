@@ -23,13 +23,14 @@ final class MainController {
         return []
     }
     
-    func saveContacts(nombre: String, apellidos: String, numero: String){
+    func saveContacts(nombre: String, apellidos: String, numero: String, empresa: String){
         let newContacto = ContactoDatos(context: coreDataStack.context)
         
         newContacto.id = UUID().uuidString
         newContacto.nombre = nombre
         newContacto.apellidos = apellidos
         newContacto.numero = numero
+        newContacto.empresa = empresa
         
         coreDataStack.save()
     }
