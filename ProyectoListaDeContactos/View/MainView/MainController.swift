@@ -34,4 +34,12 @@ final class MainController {
         
         coreDataStack.save()
     }
+    
+    func removeContact(nombre: ContactoDatos, apellido: ContactoDatos, numero: ContactoDatos, empresa: ContactoDatos){
+        coreDataStack.context.delete(nombre)
+        coreDataStack.context.delete(apellido)
+        coreDataStack.context.delete(numero)
+        coreDataStack.context.delete(empresa)
+        coreDataStack.save()
+    }
 }

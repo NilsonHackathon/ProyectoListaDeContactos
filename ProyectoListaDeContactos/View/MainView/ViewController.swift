@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         
         title = "Lista de contactos"
         
+        tableView.delegate = self
+        
         buttonConfiguration()
         
         cellRegistation()
@@ -80,3 +82,18 @@ class ViewController: UIViewController {
     
 }
 
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deletedActions = UIContextualAction(style: .destructive, title: "Delete") {action, view, completion in
+            if let selectedModel = self.dataSource.itemIdentifier(for: indexPath){
+                self.controller.removeContact(nombre: selectedModel, apellido: selectedModel, numero: selectedModel, empresa: selectedModel)
+                completion(true)
+            }
+        }
+        
+        let swipeAction = UISwipeActionsConfiguration(actions: [deletedActions])
+
+        return swipeAction
+    }
+}
