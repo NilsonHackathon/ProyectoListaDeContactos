@@ -73,7 +73,7 @@ class ViewController: UIViewController {
        /* controller.saveContacts(nombre: "Nilson", apellidos: "Saballos Arana", numero: "88051397", empresa: "UAM")
         getData()*/
         
-        let addContactVC = AddContactViewController()
+        let addContactVC = AddContactViewController(controller: controller)
         
         navigationController?.pushViewController(addContactVC, animated: true)
     }

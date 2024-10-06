@@ -16,12 +16,8 @@ class AddContactViewController: UIViewController {
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var companyTextField: UITextField!
     
-    init(controller: MainController, nameTextField: UITextField, lastNameTextField: UITextField, numberTextField: UITextField, companyTextField: UITextField){
+    init(controller: MainController){
         self.controller = controller
-        self.nameTextField = nameTextField
-        self.lastNameTextField = lastNameTextField
-        self.numberTextField = numberTextField
-        self.companyTextField = companyTextField
         
         super.init(nibName: nil, bundle: nil)
     }
