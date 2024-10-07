@@ -11,7 +11,7 @@ enum Section{
     case main
 }
 
-class ViewController: UIViewController, AddContactDelegate {
+class ViewController: UIViewController, AddContactDelegate, UISearchResultsUpdating {
     
     typealias DataSource = UITableViewDiffableDataSource<Section, ContactoDatos>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, ContactoDatos>
@@ -20,7 +20,11 @@ class ViewController: UIViewController, AddContactDelegate {
     
     private var contacts = [ContactoDatos]()
     
+    private var filteredContacts = [ContactoDatos]()
+    
     let controller = MainController()
+    
+    private var searchController: UISearchController!
     
     private lazy var dataSource: DataSource = {
         let datasource = DataSource(tableView: tableView) { tableView, IndexPath, itemIdentifier in let cell = tableView.dequeueReusableCell(withIdentifier: "ContactoTableViewCell", for: IndexPath) as? ContactoTableViewCell
@@ -46,15 +50,31 @@ class ViewController: UIViewController, AddContactDelegate {
         cellRegistation()
         
         getData()
+        
+        configureSearchController()
+    }
+    
+    // Método para configurar el SearchController
+    private func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Buscar contactos"
+        
+        // Agregar la barra de búsqueda en la barra de navegación
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     func getData () {
         contacts =  controller.getContacts()
-        applySnapchot()
+        applySnapshot()
     }
     
     func didUpdateContactList() {
         getData()  // Vuelve a cargar los datos de la tabla
+        applySnapshot()
+        tableView.reloadData() //Forzar que actualice las tablas, más para al momento de edit
     }
     
     private func cellRegistation(){
@@ -65,14 +85,26 @@ class ViewController: UIViewController, AddContactDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.fill.badge.plus"), style: .plain, target: self, action: #selector(addContact))
     }
     
-    private func applySnapchot() {
-        var snapchot = Snapshot()
+    private func applySnapshot() {
+        var snapshot = Snapshot()
         
-        snapchot.appendSections([.main])
-        snapchot.appendItems(contacts)
+        snapshot.appendSections([.main])
+        //snapshot.appendItems(contacts)
+        
+        // Verificamos si el searchController está activo y si la búsqueda tiene texto
+        let currentContacts = (searchController?.isActive == true && !filteredContacts.isEmpty) ? filteredContacts : contacts
+        
+        // Si hay texto en la búsqueda pero no se encontraron contactos, muestra solo los filtrados.
+        /*if searchController?.isActive == true && !filteredContacts.isEmpty {
+            snapshot.appendItems(filteredContacts)
+        } else {
+            snapshot.appendItems(contacts)
+        }*/
+        
+        snapshot.appendItems(currentContacts)
         
         
-        dataSource.apply(snapchot, animatingDifferences: false)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 
     @objc func addContact(){
@@ -82,6 +114,26 @@ class ViewController: UIViewController, AddContactDelegate {
         let addContactVC = AddContactViewController(controller: controller)
         addContactVC.delegate = self
         navigationController?.pushViewController(addContactVC, animated: true)
+    }
+    
+    // Método del UISearchResultsUpdating para actualizar los resultados de búsqueda
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text, !query.isEmpty else {
+            filteredContacts = contacts
+            applySnapshot()
+            return
+        }
+        
+        // Filtramos los contactos por nombre o apellido
+        filteredContacts = contacts.filter { contacto in
+            let nombre = contacto.nombre?.lowercased() ?? ""
+            let apellidos = contacto.apellidos?.lowercased() ?? ""
+            
+            return nombre.contains(query.lowercased()) || apellidos.contains(query.lowercased())
+        }
+        
+        // Aplicamos el snapshot con los contactos filtrados
+        applySnapshot()
     }
     
 }
