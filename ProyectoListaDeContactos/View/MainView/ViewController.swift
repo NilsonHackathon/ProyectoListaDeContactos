@@ -95,9 +95,11 @@ extension ViewController: UITableViewDelegate {
         
         let editActions = UIContextualAction(style: .normal, title: "edit") {action, view, completion in
             if let selectedModel = self.dataSource.itemIdentifier(for: indexPath){
-                self.controller.removeContact(nombre: selectedModel, apellido: selectedModel, numero: selectedModel, empresa: selectedModel)
+            // Aquí navegamos al controlador de edición, pasando el contacto existente
+                let addContactVC = AddContactViewController(controller: self.controller)
+                addContactVC.contactToEdit = selectedModel // Pasamos el contacto a editar
+                self.navigationController?.pushViewController(addContactVC, animated: true)
                 completion(true)
-                self.getData()
             }
         }
         

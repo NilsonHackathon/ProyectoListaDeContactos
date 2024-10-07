@@ -42,4 +42,22 @@ final class MainController {
         coreDataStack.context.delete(empresa)
         coreDataStack.save()
     }
+    
+    func updateContact(contact: ContactoDatos) {
+        do {
+            // Actualizamos los datos del contacto ya existente
+            if let existingContact = try coreDataStack.context.existingObject(with: contact.objectID) as? ContactoDatos {
+                existingContact.nombre = contact.nombre
+                existingContact.apellidos = contact.apellidos
+                existingContact.numero = contact.numero
+                existingContact.empresa = contact.empresa
+                
+                // Guardamos los cambios en Core Data
+                coreDataStack.save()
+            }
+        } catch {
+            print("Error actualizando el contacto: \(error.localizedDescription)")
+        }
+    }
+
 }
