@@ -89,10 +89,21 @@ extension ViewController: UITableViewDelegate {
             if let selectedModel = self.dataSource.itemIdentifier(for: indexPath){
                 self.controller.removeContact(nombre: selectedModel, apellido: selectedModel, numero: selectedModel, empresa: selectedModel)
                 completion(true)
+                self.getData()
             }
         }
         
-        let swipeAction = UISwipeActionsConfiguration(actions: [deletedActions])
+        let editActions = UIContextualAction(style: .normal, title: "edit") {action, view, completion in
+            if let selectedModel = self.dataSource.itemIdentifier(for: indexPath){
+                self.controller.removeContact(nombre: selectedModel, apellido: selectedModel, numero: selectedModel, empresa: selectedModel)
+                completion(true)
+                self.getData()
+            }
+        }
+        
+        editActions.backgroundColor = .green
+        
+        let swipeAction = UISwipeActionsConfiguration(actions: [deletedActions, editActions])
 
         return swipeAction
     }
