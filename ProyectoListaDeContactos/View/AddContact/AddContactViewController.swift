@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol AddContactDelegate: AnyObject {
+    func didUpdateContactList()
+}
+
 class AddContactViewController: UIViewController {
     
     private let controller: MainController
     // Editor de contactos.
     var contactToEdit: ContactoDatos?
     
+    // Propiedad del delegado
+    weak var delegate: AddContactDelegate?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -61,6 +67,9 @@ class AddContactViewController: UIViewController {
             // Si es un nuevo contacto, lo creamos
             controller.saveContacts(nombre: nameText, apellidos: lastNameText, numero: numberText, empresa: companyText)
         }
+        
+        // Notificar al delegado que se ha actualizado la lista de contactos
+        delegate?.didUpdateContactList()
         
         navigationController?.popViewController(animated: true)
     }

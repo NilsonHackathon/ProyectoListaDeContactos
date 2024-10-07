@@ -11,7 +11,7 @@ enum Section{
     case main
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AddContactDelegate {
     
     typealias DataSource = UITableViewDiffableDataSource<Section, ContactoDatos>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, ContactoDatos>
@@ -53,6 +53,10 @@ class ViewController: UIViewController {
         applySnapchot()
     }
     
+    func didUpdateContactList() {
+        getData()  // Vuelve a cargar los datos de la tabla
+    }
+    
     private func cellRegistation(){
         tableView.register(UINib(nibName: "ContactoTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactoTableViewCell")
     }
@@ -76,7 +80,7 @@ class ViewController: UIViewController {
         getData()*/
         
         let addContactVC = AddContactViewController(controller: controller)
-        
+        addContactVC.delegate = self
         navigationController?.pushViewController(addContactVC, animated: true)
     }
     
@@ -100,6 +104,7 @@ extension ViewController: UITableViewDelegate {
                 addContactVC.contactToEdit = selectedModel // Pasamos el contacto a editar
                 self.navigationController?.pushViewController(addContactVC, animated: true)
                 completion(true)
+                addContactVC.delegate = self
             }
         }
         

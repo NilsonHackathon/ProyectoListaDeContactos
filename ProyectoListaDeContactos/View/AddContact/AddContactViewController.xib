@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddContactViewController" customModule="ProyectoListaDeContactos" customModuleProvider="target">
             <connections>
                 <outlet property="companyTextField" destination="7Yj-yg-wu9" id="Ube-mY-Nel"/>
-                <outlet property="lastNameTextField" destination="7Xg-eK-dAA" id="ca7-4c-Nrf"/>
+                <outlet property="lastNameTextField" destination="Vjq-WZ-I1g" id="Ow7-8T-RM4"/>
                 <outlet property="nameTextField" destination="gtn-9M-ycM" id="1ZO-92-igb"/>
                 <outlet property="numberTextField" destination="7Xg-eK-dAA" id="fdb-T7-CbB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

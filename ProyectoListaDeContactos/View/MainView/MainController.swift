@@ -24,6 +24,8 @@ final class MainController {
     }
     
     func saveContacts(nombre: String, apellidos: String, numero: String, empresa: String){
+        /*print("Guardando apellidos: \(apellidos)") // Depuración*/
+        
         let newContacto = ContactoDatos(context: coreDataStack.context)
         
         newContacto.id = UUID().uuidString
@@ -47,6 +49,7 @@ final class MainController {
         do {
             // Actualizamos los datos del contacto ya existente
             if let existingContact = try coreDataStack.context.existingObject(with: contact.objectID) as? ContactoDatos {
+                /*print("Actualizando apellidos: \(contact.apellidos)") // Depuración*/
                 existingContact.nombre = contact.nombre
                 existingContact.apellidos = contact.apellidos
                 existingContact.numero = contact.numero
